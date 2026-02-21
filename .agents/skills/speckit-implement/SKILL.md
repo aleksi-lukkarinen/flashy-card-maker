@@ -1,8 +1,6 @@
 ---
 name: speckit-implement
-description: Execute all tasks from the task breakdown to build the feature. Use after
-  task generation to systematically implement the planned solution following TDD approach
-  where applicable.
+description: Execute all tasks from the task breakdown to build the feature. Use after task generation to systematically implement the planned solution following TDD approach where applicable.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit

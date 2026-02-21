@@ -1,8 +1,6 @@
 ---
 name: speckit-checklist
-description: Generate custom quality checklists for validating requirements completeness
-  and clarity. Use to create unit tests for English that ensure spec quality before
-  implementation.
+description: Generate custom quality checklists for validating requirements completeness and clarity. Use to create unit tests for English that ensure spec quality before implementation.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit

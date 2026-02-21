@@ -1,8 +1,6 @@
 ---
 name: speckit-plan
-description: Generate technical implementation plans from feature specifications.
-  Use after creating a spec to define architecture, tech stack, and implementation
-  phases. Creates plan.md with detailed technical design.
+description: Generate technical implementation plans from feature specifications. Use after creating a spec to define architecture, tech stack, and implementation phases. Creates plan.md with detailed technical design.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit

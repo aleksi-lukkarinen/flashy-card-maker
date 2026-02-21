@@ -1,9 +1,6 @@
 ---
 name: speckit-specify
-description: Create or update feature specifications from natural language descriptions.
-  Use when starting new features or refining requirements. Generates spec.md with
-  user stories, functional requirements, and acceptance criteria following spec-driven
-  development methodology.
+description: Create or update feature specifications from natural language descriptions. Use when starting new features or refining requirements. Generates spec.md with user stories, functional requirements, and acceptance criteria following spec-driven development methodology.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit

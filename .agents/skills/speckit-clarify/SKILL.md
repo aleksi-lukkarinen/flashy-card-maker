@@ -1,8 +1,6 @@
 ---
 name: speckit-clarify
-description: Structured clarification workflow for underspecified requirements. Use
-  before planning to resolve ambiguities through coverage-based questioning. Records
-  answers in spec clarifications section.
+description: Structured clarification workflow for underspecified requirements. Use before planning to resolve ambiguities through coverage-based questioning. Records answers in spec clarifications section.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit

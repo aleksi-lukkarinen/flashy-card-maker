@@ -1,8 +1,6 @@
 ---
 name: speckit-tasks
-description: Break down implementation plans into actionable task lists. Use after
-  planning to create a structured task breakdown. Generates tasks.md with ordered,
-  dependency-aware tasks.
+description: Break down implementation plans into actionable task lists. Use after planning to create a structured task breakdown. Generates tasks.md with ordered, dependency-aware tasks.
 compatibility: Requires spec-kit project structure with .specify/ directory
 metadata:
   author: github-spec-kit
