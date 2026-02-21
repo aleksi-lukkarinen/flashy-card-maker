@@ -7,7 +7,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
-# Build results
+# AI/LLM
+.codex
+
+# Version control
+.git
+
+# Build Results
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
@@ -33,6 +39,7 @@ ScaffoldingReadMe.txt
 
 # NuGet Packages
 *.nupkg
+
 # NuGet Symbol Packages
 *.snupkg
 
@@ -44,11 +51,6 @@ CodeCoverage/
 # MSBuild Binary and Structured Log
 *.binlog
 
-# MSTest test Results
+# MSTest Test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
-
-# NUnit
-*.VisualState.xml
-TestResult.xml
-nunit-*.xml
