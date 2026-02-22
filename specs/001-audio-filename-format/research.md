@@ -1,22 +1,6 @@
-# Research: Audio Filename Format
-
-## Decision 1: Module boundaries
-
-- Decision: Keep feature logic in core/infrastructure modules with thin UI adapters.
-- Rationale: Supports reuse across multiple interfaces and isolates change.
-- Alternatives considered:
-  - UI-centric implementation (rejected: increases coupling).
-
-## Decision 2: Validation-first workflow
-
-- Decision: Validate inputs/configuration before feature execution.
-- Rationale: Prevents partial invalid runs and improves error clarity.
-- Alternatives considered:
-  - Deferred validation after execution start (rejected: weaker UX and higher failure cost).
-
-## Decision 3: Observability and failure reporting
-
-- Decision: Emit structured logs and explicit per-step outcomes.
-- Rationale: Supports diagnosis, supportability, and reliable reruns.
-- Alternatives considered:
-  - Minimal logging (rejected: insufficient operational visibility).
+# Research: Audio Filename Format 
+## Decision 1: Delivery strategy for User Story 1  - Decision: Implement User Story 1 (Generate Deterministic Human-Readable Audio Filenames) as an independently testable vertical slice with explicit contracts. - Rationale: Preserves incremental delivery, rollback safety, and clear acceptance validation. - Alternatives considered:   - Bundle with other stories in one release (rejected: weaker traceability and harder defect isolation for Generate Deterministic Human-Readable Audio Filenames). 
+## Decision 2: Delivery strategy for User Story 2  - Decision: Implement User Story 2 (Produce Valid Slug from Spoken Text) as an independently testable vertical slice with explicit contracts. - Rationale: Preserves incremental delivery, rollback safety, and clear acceptance validation. - Alternatives considered:   - Bundle with other stories in one release (rejected: weaker traceability and harder defect isolation for Produce Valid Slug from Spoken Text). 
+## Decision 3: Delivery strategy for User Story 3  - Decision: Implement User Story 3 (Preserve Uniqueness Across Languages and Formats) as an independently testable vertical slice with explicit contracts. - Rationale: Preserves incremental delivery, rollback safety, and clear acceptance validation. - Alternatives considered:   - Bundle with other stories in one release (rejected: weaker traceability and harder defect isolation for Preserve Uniqueness Across Languages and Formats). 
+## Decision 4: Integration and dependency failure handling  - Decision: Apply deterministic validation and failure mapping for all external boundaries in audio-filename-format workflows. - Rationale: Prevents partial undefined states and improves supportability under degraded dependencies. - Alternatives considered:   - Best-effort ad hoc error handling (rejected: non-repeatable operational behavior). 
+## Decision 5: Observability and NFR verification  - Decision: Require explicit test evidence for performance, security, and diagnostics for each story phase. - Rationale: Converts non-functional objectives into release gates rather than post-hoc checks. - Alternatives considered:   - Defer NFR checks to final polish only (rejected: late discovery risk).

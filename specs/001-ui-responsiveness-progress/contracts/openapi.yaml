@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: UI Responsiveness Progress Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-ui-responsiveness-progress feature.
+  title: 
+UI Responsiveness Progress
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-ui-responsiveness-progress
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /ui-responsiveness-progress/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executeui-responsiveness-progressWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /ui-responsiveness-progress/interact-with-ui-while-processing-runs:     post:       summary: Execute User Story 1 workflow       operationId: executeUiResponsivenessProgressStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/UiResponsivenessProgressStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/UiResponsivenessProgressStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /ui-responsiveness-progress/see-steady-conversion-progress-updates:     post:       summary: Execute User Story 2 workflow       operationId: executeUiResponsivenessProgressStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/UiResponsivenessProgressStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/UiResponsivenessProgressStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /ui-responsiveness-progress/recover-gracefully-from-processing-or-update-disruptions:     post:       summary: Execute User Story 3 workflow       operationId: executeUiResponsivenessProgressStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/UiResponsivenessProgressStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/UiResponsivenessProgressStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    UiResponsivenessProgressStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     UiResponsivenessProgressStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    UiResponsivenessProgressStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     UiResponsivenessProgressStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    UiResponsivenessProgressStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     UiResponsivenessProgressStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

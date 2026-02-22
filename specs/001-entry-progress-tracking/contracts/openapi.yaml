@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Entry Progress Tracking Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-entry-progress-tracking feature.
+  title: 
+Entry Progress Tracking
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-entry-progress-tracking
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /entry-progress-tracking/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executeentry-progress-trackingWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /entry-progress-tracking/process-entries-concurrently-with-per-entry-phase-visibility:     post:       summary: Execute User Story 1 workflow       operationId: executeEntryProgressTrackingStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/EntryProgressTrackingStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/EntryProgressTrackingStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /entry-progress-tracking/show-progress-for-long-running-operations-per-entry:     post:       summary: Execute User Story 2 workflow       operationId: executeEntryProgressTrackingStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/EntryProgressTrackingStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/EntryProgressTrackingStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /entry-progress-tracking/display-per-entry-and-total-processing-time:     post:       summary: Execute User Story 3 workflow       operationId: executeEntryProgressTrackingStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/EntryProgressTrackingStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/EntryProgressTrackingStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    EntryProgressTrackingStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     EntryProgressTrackingStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    EntryProgressTrackingStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     EntryProgressTrackingStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    EntryProgressTrackingStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     EntryProgressTrackingStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

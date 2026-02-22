@@ -1,7 +1,7 @@
 # Implementation Plan: Modular Configuration Sources
 
-**Branch**: $feature | **Date**: 2026-02-22 | **Spec**: $specPath
-**Input**: Feature specification from $specPath
+**Branch**: `001-config-sources-modular` | **Date**: 2026-02-22 | **Spec**: `specs/001-config-sources-modular/spec.md`
+**Input**: Feature specification from `specs/001-config-sources-modular/spec.md`
 
 ## Summary
 
@@ -33,30 +33,30 @@ Implement Modular Configuration Sources with a modular architecture, TDD-first d
 
 ### Documentation (this feature)
 
-`	ext
+```text
 specs/001-config-sources-modular/
 |-- plan.md
 |-- research.md
 |-- data-model.md
 |-- quickstart.md
 |-- contracts/
-|   -- openapi.yaml
--- tasks.md
-`
+|   `-- openapi.yaml
+`-- tasks.md
+```
 
 ### Source Code (repository root)
 
-`	ext
+```text
 src/
 |-- FlashyCardMaker.Core/
 |-- FlashyCardMaker.Infrastructure/
--- FlashyCardMaker.UI.Cli/
+`-- FlashyCardMaker.UI.Cli/
 
 tests/
 |-- FlashyCardMaker.Core.UnitTests/
 |-- FlashyCardMaker.Infrastructure.IntegrationTests/
--- FlashyCardMaker.UI.Cli.Tests/
-`
+`-- FlashyCardMaker.UI.Cli.Tests/
+```
 
 **Structure Decision**: Reuse modular structure and implement this feature through core services plus adapter wiring.
 

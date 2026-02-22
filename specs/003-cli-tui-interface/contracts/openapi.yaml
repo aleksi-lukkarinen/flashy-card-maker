@@ -1,179 +1,26 @@
 openapi: 3.0.3
 info:
-  title: Flashy Card Maker CLI Application Contract
-  version: 0.1.0
-  description: >-
-    Internal application service contract consumed by the CLI/TUI adapter.
-    This contract defines a UI-agnostic boundary for command execution and status reporting.
+  title: 
+CLI/TUI First Interface
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+003-cli-tui-interface
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /execution/requests:
-    post:
-      summary: Submit a normalized execution request
-      operationId: submitExecutionRequest
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecutionRequest'
-      responses:
-        '202':
-          description: Request accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecutionAccepted'
-        '400':
-          description: Validation failure
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /execution/requests/{requestId}:
-    get:
-      summary: Get execution status and result
-      operationId: getExecutionResult
-      parameters:
-        - in: path
-          name: requestId
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Result available
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecutionResult'
-        '404':
-          description: Request not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /configuration/effective:
-    post:
-      summary: Resolve and validate effective configuration
-      operationId: resolveEffectiveConfiguration
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ConfigurationResolveRequest'
-      responses:
-        '200':
-          description: Effective configuration result
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EffectiveConfiguration'
+  /cli-tui-interface/run-card-generation-from-structured-cli-commands:     post:       summary: Execute User Story 1 workflow       operationId: executeCliTuiInterfaceStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/CliTuiInterfaceStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/CliTuiInterfaceStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /cli-tui-interface/understand-usage-through-hierarchical-help:     post:       summary: Execute User Story 2 workflow       operationId: executeCliTuiInterfaceStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/CliTuiInterfaceStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/CliTuiInterfaceStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /cli-tui-interface/combine-file-and-cli-configuration-safely:     post:       summary: Execute User Story 3 workflow       operationId: executeCliTuiInterfaceStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/CliTuiInterfaceStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/CliTuiInterfaceStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecutionRequest:
-      type: object
-      required:
-        - operation
-        - parameters
-        - correlationId
-        - requestedAtUtc
-      properties:
-        operation:
-          type: string
-        parameters:
-          type: object
-          additionalProperties: true
-        correlationId:
-          type: string
-        requestedAtUtc:
-          type: string
-          format: date-time
-        requestedBy:
-          type: string
-          nullable: true
-    ExecutionAccepted:
-      type: object
-      required:
-        - requestId
-        - status
-      properties:
-        requestId:
-          type: string
-        status:
-          type: string
-          enum: [Accepted]
-    ExecutionResult:
-      type: object
-      required:
-        - requestId
-        - status
-        - exitCode
-        - messages
-      properties:
-        requestId:
-          type: string
-        status:
-          type: string
-          enum: [Success, ValidationError, ConfigError, RuntimeError, Cancelled]
-        exitCode:
-          type: integer
-        messages:
-          type: array
-          items:
-            type: string
-        metrics:
-          type: object
-          additionalProperties: true
-        artifacts:
-          type: array
-          items:
-            type: string
-    ConfigurationResolveRequest:
-      type: object
-      required:
-        - commandLine
-        - files
-      properties:
-        commandLine:
-          type: array
-          items:
-            type: string
-        files:
-          type: array
-          items:
-            type: string
-    EffectiveConfiguration:
-      type: object
-      required:
-        - values
-        - origins
-        - isValid
-      properties:
-        values:
-          type: object
-          additionalProperties: true
-        origins:
-          type: object
-          additionalProperties:
-            type: string
-        warnings:
-          type: array
-          items:
-            type: string
-        errors:
-          type: array
-          items:
-            type: string
-        isValid:
-          type: boolean
+    CliTuiInterfaceStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     CliTuiInterfaceStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    CliTuiInterfaceStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     CliTuiInterfaceStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    CliTuiInterfaceStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     CliTuiInterfaceStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
-      required:
-        - code
-        - message
+      required: [code, message]
       properties:
         code:
           type: string

@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Language Card Pipeline Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-language-card-pipeline feature.
+  title: 
+Language Card Pipeline
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-language-card-pipeline
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /language-card-pipeline/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executelanguage-card-pipelineWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /language-card-pipeline/configure-and-generate-multilingual-flashcards:     post:       summary: Execute User Story 1 workflow       operationId: executeLanguageCardPipelineStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageCardPipelineStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageCardPipelineStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /language-card-pipeline/assign-translation-and-audio-services-by-language-pair:     post:       summary: Execute User Story 2 workflow       operationId: executeLanguageCardPipelineStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageCardPipelineStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageCardPipelineStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /language-card-pipeline/export-results-in-multiple-output-formats:     post:       summary: Execute User Story 3 workflow       operationId: executeLanguageCardPipelineStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageCardPipelineStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageCardPipelineStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    LanguageCardPipelineStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageCardPipelineStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    LanguageCardPipelineStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageCardPipelineStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    LanguageCardPipelineStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageCardPipelineStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

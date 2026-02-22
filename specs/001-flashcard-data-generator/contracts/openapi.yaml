@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Flashcard Data Generator Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-flashcard-data-generator feature.
+  title: 
+Flashcard Data Generator
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-flashcard-data-generator
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /flashcard-data-generator/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executeflashcard-data-generatorWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-data-generator/configure-voices-and-targets:     post:       summary: Execute User Story 1 workflow       operationId: executeFlashcardDataGeneratorStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/FlashcardDataGeneratorStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/FlashcardDataGeneratorStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-data-generator/provide-word-and-phrase-lists:     post:       summary: Execute User Story 2 workflow       operationId: executeFlashcardDataGeneratorStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/FlashcardDataGeneratorStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/FlashcardDataGeneratorStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-data-generator/generate-translations-audio-and-export:     post:       summary: Execute User Story 3 workflow       operationId: executeFlashcardDataGeneratorStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/FlashcardDataGeneratorStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/FlashcardDataGeneratorStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    FlashcardDataGeneratorStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     FlashcardDataGeneratorStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    FlashcardDataGeneratorStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     FlashcardDataGeneratorStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    FlashcardDataGeneratorStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     FlashcardDataGeneratorStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

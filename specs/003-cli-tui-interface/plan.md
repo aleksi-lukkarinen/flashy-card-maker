@@ -1,7 +1,7 @@
 # Implementation Plan: CLI/TUI First Interface
 
-**Branch**: `003-cli-tui-interface` | **Date**: 2026-02-22 | **Spec**: `F:\dev\C#\flashy-card-maker\specs\003-cli-tui-interface\spec.md`  
-**Input**: Feature specification from `F:\dev\C#\flashy-card-maker\specs\003-cli-tui-interface\spec.md`
+**Branch**: `003-cli-tui-interface` | **Date**: 2026-02-22 | **Spec**: `specs/003-cli-tui-interface/spec.md`
+**Input**: Feature specification from `specs/003-cli-tui-interface/spec.md`
 
 ## Summary
 

@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Language Audio Folders Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-language-audio-folders feature.
+  title: 
+Language Audio Folders
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-language-audio-folders
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /language-audio-folders/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executelanguage-audio-foldersWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /language-audio-folders/configure-folder-per-language:     post:       summary: Execute User Story 1 workflow       operationId: executeLanguageAudioFoldersStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageAudioFoldersStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageAudioFoldersStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /language-audio-folders/validate-folder-configuration-before-save:     post:       summary: Execute User Story 2 workflow       operationId: executeLanguageAudioFoldersStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageAudioFoldersStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageAudioFoldersStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /language-audio-folders/keep-output-traceable-across-languages:     post:       summary: Execute User Story 3 workflow       operationId: executeLanguageAudioFoldersStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/LanguageAudioFoldersStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/LanguageAudioFoldersStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    LanguageAudioFoldersStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageAudioFoldersStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    LanguageAudioFoldersStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageAudioFoldersStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    LanguageAudioFoldersStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     LanguageAudioFoldersStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

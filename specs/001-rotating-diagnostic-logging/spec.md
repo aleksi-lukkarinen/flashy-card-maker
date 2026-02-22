@@ -85,7 +85,7 @@ As a user, I want technical request/response details for remote services while a
 - **FR-008**: System MUST log remote response diagnostics, including status/result metadata.
 - **FR-009**: System MUST include only short excerpts for large bulk payloads (such as audio data) and MUST not store full bulk content in diagnostic logs.
 - **FR-010**: System MUST mask or omit sensitive credential values in all logged request/response diagnostics.
-- **FR-011**: Log writing and rotation MUST remain robust under sustained throughput and not interrupt primary processing flows.
+- **FR-011**: Log writing and rotation MUST remain reliable with explicit pass/fail criteria under sustained throughput and not interrupt primary processing flows.
 - **FR-012**: Logging configuration MUST be user-controlled and persistable across runs according to configuration policy.
 
 ### Key Entities *(include if feature involves data)*

@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Runtime Error Recovery for Parallel Jobs Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-runtime-error-recovery feature.
+  title: 
+Runtime Error Recovery for Parallel Jobs
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-runtime-error-recovery
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /runtime-error-recovery/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executeruntime-error-recoveryWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /runtime-error-recovery/continue-processing-despite-per-job-failures:     post:       summary: Execute User Story 1 workflow       operationId: executeRuntimeErrorRecoveryStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RuntimeErrorRecoveryStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RuntimeErrorRecoveryStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /runtime-error-recovery/understand-final-outcome-of-every-job:     post:       summary: Execute User Story 2 workflow       operationId: executeRuntimeErrorRecoveryStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RuntimeErrorRecoveryStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RuntimeErrorRecoveryStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /runtime-error-recovery/resume-interrupted-or-partially-failed-runs:     post:       summary: Execute User Story 3 workflow       operationId: executeRuntimeErrorRecoveryStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RuntimeErrorRecoveryStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RuntimeErrorRecoveryStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    RuntimeErrorRecoveryStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RuntimeErrorRecoveryStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    RuntimeErrorRecoveryStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RuntimeErrorRecoveryStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    RuntimeErrorRecoveryStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RuntimeErrorRecoveryStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

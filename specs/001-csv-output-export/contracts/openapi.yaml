@@ -1,46 +1,68 @@
 openapi: 3.0.3
 info:
   title: CSV Output Export Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-csv-output-export feature.
+  version: 0.2.0
+  description: Internal contract boundary for 001-csv-output-export workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /csv-output-export/execute:
+  /csv-output-export/export:
     post:
-      summary: Execute feature workflow
-      operationId: executecsv-output-exportWorkflow
+      summary: Export flashcard dataset to CSV
+      operationId: exportCsvDataset
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExecuteRequest'
+              $ref: '#/components/schemas/CsvExportRequest'
       responses:
         '200':
-          description: Execution completed
+          description: Export completed
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecuteResult'
+                $ref: '#/components/schemas/CsvExportResult'
         '400':
           description: Validation failed
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /csv-output-export/validate:
+    post:
+      summary: Validate export compatibility before writing output
+      operationId: validateCsvExport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CsvExportValidationRequest'
+      responses:
+        '200':
+          description: Validation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsvExportValidationResult'
 components:
   schemas:
-    ExecuteRequest:
+    CsvExportRequest:
       type: object
-      required: [parameters]
+      required: [sourceDatasetPath, outputFilePath, delimiter]
       properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
+        sourceDatasetPath:
+          type: string
+        outputFilePath:
+          type: string
+        delimiter:
+          type: string
+        includeHeader:
+          type: boolean
+    CsvExportResult:
       type: object
-      required: [status, messages]
+      required: [status, messages, rowCount]
       properties:
         status:
           type: string
@@ -49,10 +71,33 @@ components:
           type: array
           items:
             type: string
+        rowCount:
+          type: integer
         artifacts:
           type: array
           items:
             type: string
+    CsvExportValidationRequest:
+      type: object
+      required: [sourceDatasetPath]
+      properties:
+        sourceDatasetPath:
+          type: string
+        targetProfile:
+          type: string
+    CsvExportValidationResult:
+      type: object
+      required: [status, messages, invalidRowCount]
+      properties:
+        status:
+          type: string
+          enum: [Success, PartialSuccess, Failed]
+        messages:
+          type: array
+          items:
+            type: string
+        invalidRowCount:
+          type: integer
     ErrorResponse:
       type: object
       required: [code, message]

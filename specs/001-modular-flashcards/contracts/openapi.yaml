@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Modular Flashcard Platform Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-modular-flashcards feature.
+  title: 
+Modular Flashcard Platform
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-modular-flashcards
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /modular-flashcards/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executemodular-flashcardsWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /modular-flashcards/create-flashcards-from-any-supported-source:     post:       summary: Execute User Story 1 workflow       operationId: executeModularFlashcardsStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/ModularFlashcardsStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/ModularFlashcardsStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /modular-flashcards/enrich-cards-with-translation-and-audio-services:     post:       summary: Execute User Story 2 workflow       operationId: executeModularFlashcardsStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/ModularFlashcardsStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/ModularFlashcardsStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /modular-flashcards/configure-and-run-through-preferred-interface-and-output:     post:       summary: Execute User Story 3 workflow       operationId: executeModularFlashcardsStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/ModularFlashcardsStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/ModularFlashcardsStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    ModularFlashcardsStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     ModularFlashcardsStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    ModularFlashcardsStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     ModularFlashcardsStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    ModularFlashcardsStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     ModularFlashcardsStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

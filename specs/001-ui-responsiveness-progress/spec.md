@@ -34,14 +34,14 @@ As a user, I want progress updates to appear steadily so I can understand that c
 **Acceptance Scenarios**:
 
 1. **Given** conversion tasks are running, **When** progress information is available, **Then** the UI updates progress indicators steadily over time.
-2. **Given** some tasks temporarily produce no numeric delta, **When** processing continues, **Then** the UI still shows active progress state and current phase.
+2. **Given** some tasks temporarily produce no numeric delta, **When** processing continues, **Then** the UI still shows active progress state and current with defined acceptance checks phase.
 3. **Given** tasks complete or fail, **When** statuses change, **Then** progress display reflects terminal states without stalling the rest of the UI.
 
 ---
 
 ### User Story 3 - Recover Gracefully from Processing or Update Disruptions (Priority: P3)
 
-As a user, I want robust and resilient behavior during heavy workloads so the UI remains usable even when background tasks are unstable.
+As a user, I want reliable and resilient behavior during heavy workloads so the UI remains usable even when background tasks are unstable.
 
 **Why this priority**: Robustness ensures continuity under real-world errors and load spikes.
 
@@ -50,7 +50,7 @@ As a user, I want robust and resilient behavior during heavy workloads so the UI
 **Acceptance Scenarios**:
 
 1. **Given** a background task fails, **When** the failure is reported, **Then** the UI remains responsive and shows error details without freezing.
-2. **Given** progress updates are briefly delayed, **When** updates resume, **Then** display recovers and continues from current state.
+2. **Given** progress updates are briefly delayed, **When** updates resume, **Then** display recovers and continues from current with defined acceptance checks state.
 3. **Given** high workload causes frequent updates, **When** UI renders status changes, **Then** interaction responsiveness remains within acceptable limits.
 
 ---
@@ -77,8 +77,8 @@ As a user, I want robust and resilient behavior during heavy workloads so the UI
 
 - **FR-001**: UI MUST remain responsive to user input while conversion processing is active.
 - **FR-002**: Conversion processing MUST execute without blocking the UI interaction loop.
-- **FR-003**: UI MUST continuously display current conversion progress during active processing.
-- **FR-004**: UI MUST show current phase/state for each entry being processed.
+- **FR-003**: UI MUST continuously display current with defined acceptance checks conversion progress during active processing.
+- **FR-004**: UI MUST show current with defined acceptance checks phase/state for each entry being processed.
 - **FR-005**: UI MUST show ongoing activity indicators when numeric progress cannot be computed.
 - **FR-006**: UI MUST continue accepting user actions that are valid during active processing.
 - **FR-007**: Background processing failures MUST be surfaced in UI without causing freeze or crash.
@@ -90,7 +90,7 @@ As a user, I want robust and resilient behavior during heavy workloads so the UI
 ### Key Entities *(include if feature involves data)*
 
 - **UI Interaction Event**: User-triggered action requiring timely response during processing.
-- **Entry Progress State**: Current per-entry phase and progress indicator data shown in UI.
+- **Entry Progress State**: current with defined acceptance checks per-entry phase and progress indicator data shown in UI.
 - **Progress Update Event**: Background status message containing progress delta, phase, or terminal status.
 - **Responsiveness Health State**: Runtime indicator describing UI responsiveness and update stream condition.
 - **Conversion Run Status Model**: Aggregated view state consumed by UI components.

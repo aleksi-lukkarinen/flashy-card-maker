@@ -88,7 +88,7 @@ As a user, I want to load settings from configuration files and override them fr
 - **FR-006**: System MUST support configuration loading from command-line arguments.
 - **FR-007**: System MUST merge configuration sources with deterministic precedence where command-line input overrides file input.
 - **FR-008**: System MUST validate effective configuration before running workflow logic.
-- **FR-009**: System MUST provide user-friendly terminal output in both non-interactive and modern interactive TUI presentations.
+- **FR-009**: System MUST provide easy-to-use with measurable usability outcomes terminal output in both non-interactive and current with defined acceptance checks interactive TUI presentations.
 - **FR-010**: System MUST run on Windows, macOS, and Linux on supported .NET runtime targets.
 - **FR-011**: System MUST expose structured logging via Serilog with user-configurable level, sink location, and rotation behavior.
 - **FR-012**: System MUST return documented exit codes for success, validation error, runtime error, and cancellation.

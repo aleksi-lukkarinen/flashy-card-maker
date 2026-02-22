@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: TTS Voice Discovery Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-tts-voice-discovery feature.
+  title: 
+TTS Voice Discovery
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-tts-voice-discovery
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /tts-voice-discovery/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executetts-voice-discoveryWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /tts-voice-discovery/query-available-voices-by-language:     post:       summary: Execute User Story 1 workflow       operationId: executeTtsVoiceDiscoveryStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/TtsVoiceDiscoveryStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/TtsVoiceDiscoveryStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /tts-voice-discovery/provide-required-query-parameters:     post:       summary: Execute User Story 2 workflow       operationId: executeTtsVoiceDiscoveryStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/TtsVoiceDiscoveryStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/TtsVoiceDiscoveryStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /tts-voice-discovery/handle-service-failures-and-keep-workflow-clear:     post:       summary: Execute User Story 3 workflow       operationId: executeTtsVoiceDiscoveryStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/TtsVoiceDiscoveryStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/TtsVoiceDiscoveryStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    TtsVoiceDiscoveryStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     TtsVoiceDiscoveryStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    TtsVoiceDiscoveryStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     TtsVoiceDiscoveryStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    TtsVoiceDiscoveryStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     TtsVoiceDiscoveryStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

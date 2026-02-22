@@ -43,7 +43,7 @@ As a test engineer, I want every behavior to be testable with explicit dependenc
 
 As an operator or tester, I want runtime behavior to be externally configurable so the same codebase can be validated in multiple scenarios without code changes.
 
-**Why this priority**: External configuration enables robust testing and safe operation across development, test, and production contexts.
+**Why this priority**: External configuration enables reliable testing and safe operation across development, test, and production contexts.
 
 **Independent Test**: Can be tested by running the same workflow with different external configuration sets and confirming expected behavior changes with no code modifications.
 

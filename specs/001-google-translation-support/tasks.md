@@ -3,139 +3,87 @@
 **Input**: Design documents from specs/001-google-translation-support/
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/openapi.yaml, quickstart.md
 
-**Tests**: Tests are REQUIRED for every user story and integration. TDD is mandatory: write failing tests first.
+**Tests**: Tests are REQUIRED for all user stories and integrations. TDD is mandatory.
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Initialize project and test scaffolding for the feature.
-
-- [ ] T001 Create feature workspace structure in src/FlashyCardMaker.Core/Features/001-google-translation-support/.gitkeep
-- [ ] T002 Create feature test folders in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/.gitkeep
-- [ ] T003 [P] Add feature execution scaffold registration in src/FlashyCardMaker.Infrastructure/Composition/FeatureRegistration.cs
-- [ ] T004 [P] Add CI placeholder for feature test filtering in .github/workflows/ci.yml
+- [ ] T001 Create feature module scaffold in src/FlashyCardMaker.Core/Features/001-google-translation-support/GoogleTranslationSupport.Module.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T002 Create feature test scaffold in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/GoogleTranslationSupport.ModuleTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T003 [P] Add registration hook in src/FlashyCardMaker.Infrastructure/Composition/GoogleTranslationSupport.Registration.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T004 [P] Add CI feature test filter in .github/workflows/ci.yml (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
 ---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
-**Purpose**: Complete shared contracts, validation, and observability required before story work.
+- [ ] T005 Define feature contracts in src/FlashyCardMaker.Core/Contracts/001-google-translation-support/GoogleTranslationSupport.Contracts.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T006 [P] Define validation pipeline in src/FlashyCardMaker.Core/Validation/001-google-translation-support/GoogleTranslationSupport.Validation.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T007 Add boundary integration tests in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/GoogleTranslationSupport.BoundaryTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T008 Configure structured logging in src/FlashyCardMaker.Infrastructure/Logging/001-google-translation-support/GoogleTranslationSupport.Logging.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
-- [ ] T005 Define shared feature contracts in src/FlashyCardMaker.Core/Contracts/001-google-translation-support/FeatureContracts.cs
-- [ ] T006 [P] Define feature validation primitives in src/FlashyCardMaker.Core/Validation/001-google-translation-support/FeatureValidation.cs
-- [ ] T007 [P] Implement shared feature result model in src/FlashyCardMaker.Core/Models/001-google-translation-support/FeatureResult.cs
-- [ ] T008 Add foundational integration tests for feature I/O boundaries in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/FeatureBoundaryTests.cs
-- [ ] T009 Configure structured logging events for feature lifecycle in src/FlashyCardMaker.Infrastructure/Logging/001-google-translation-support/FeatureLogging.cs
-
-**Checkpoint**: Foundation complete; user story phases can start.
+**Checkpoint**: Foundational phase complete.
 
 ---
 
 ## Phase 3: User Story 1 - Translate Flashcard Text Using Google Service (Priority: P1)
 
-**Goal**: Deliver User Story 1 functionality for Translate Flashcard Text Using Google Service.
+### Tests (REQUIRED)
 
-**Independent Test**: Can be tested by selecting a source language and target language, requesting translation, and verifying returned text in generated cards.
+- [ ] T009 [P] [US1] Write failing unit tests for Translate Flashcard Text Using Google Service in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.UnitTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T010 [P] [US1] Write failing integration tests for Translate Flashcard Text Using Google Service in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.IntegrationTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
-### Tests for User Story 1 (REQUIRED)
+### Implementation
 
-- [ ] T010 [P] [US1] Write failing unit tests for Translate Flashcard Text Using Google Service in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story1/Story1UnitTests.cs
-- [ ] T011 [P] [US1] Write failing integration tests for Translate Flashcard Text Using Google Service in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story1/Story1IntegrationTests.cs
-
-### Implementation for User Story 1
-
-- [ ] T012 [US1] Create story 1 domain model for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story1/Story1Model.cs
-- [ ] T013 [US1] Implement story 1 service workflow for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story1/Story1Service.cs
-- [ ] T014 [US1] Implement story 1 adapter endpoint or command mapping in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story1/Story1Adapter.cs
-- [ ] T015 [US1] Add story 1 observability and error mapping in src/FlashyCardMaker.Infrastructure/Observability/001-google-translation-support/Story1Observability.cs
-
-**Checkpoint**: User Story 1 is independently functional and testable.
+- [ ] T011 [US1] Implement happy-path flow for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.HappyPathService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T012 [US1] Implement validation/error flow for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.ValidationService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T013 [US1] Implement edge-case handler for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.EdgeCasePolicy.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T014 [US1] Implement adapter mapping for Translate Flashcard Text Using Google Service in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story1/TranslateFlashcardTextUsingGoogleService.Adapter.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
 ---
 
 ## Phase 4: User Story 2 - Configure and Validate Google Translation Access (Priority: P2)
 
-**Goal**: Deliver User Story 2 functionality for Configure and Validate Google Translation Access.
+### Tests (REQUIRED)
 
-**Independent Test**: Can be tested by running configuration checks with valid and invalid credentials and confirming clear pass/fail feedback.
+- [ ] T015 [P] [US2] Write failing unit tests for Configure and Validate Google Translation Access in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.UnitTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T016 [P] [US2] Write failing integration tests for Configure and Validate Google Translation Access in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.IntegrationTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
-### Tests for User Story 2 (REQUIRED)
+### Implementation
 
-- [ ] T016 [P] [US2] Write failing unit tests for Configure and Validate Google Translation Access in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story2/Story2UnitTests.cs
-- [ ] T017 [P] [US2] Write failing integration tests for Configure and Validate Google Translation Access in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story2/Story2IntegrationTests.cs
-
-### Implementation for User Story 2
-
-- [ ] T018 [US2] Create story 2 domain model for Configure and Validate Google Translation Access in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story2/Story2Model.cs
-- [ ] T019 [US2] Implement story 2 service workflow for Configure and Validate Google Translation Access in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story2/Story2Service.cs
-- [ ] T020 [US2] Implement story 2 adapter endpoint or command mapping in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story2/Story2Adapter.cs
-- [ ] T021 [US2] Add story 2 observability and error mapping in src/FlashyCardMaker.Infrastructure/Observability/001-google-translation-support/Story2Observability.cs
-
-**Checkpoint**: User Story 2 is independently functional and testable.
+- [ ] T017 [US2] Implement happy-path flow for Configure and Validate Google Translation Access in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.HappyPathService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T018 [US2] Implement validation/error flow for Configure and Validate Google Translation Access in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.ValidationService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T019 [US2] Implement edge-case handler for Configure and Validate Google Translation Access in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.EdgeCasePolicy.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T020 [US2] Implement adapter mapping for Configure and Validate Google Translation Access in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story2/ConfigureAndValidateGoogleTranslationAccess.Adapter.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
 ---
 
 ## Phase 5: User Story 3 - Preserve Run Continuity on Translation Failures (Priority: P3)
 
-**Goal**: Deliver User Story 3 functionality for Preserve Run Continuity on Translation Failures.
+### Tests (REQUIRED)
 
-**Independent Test**: Can be tested by simulating translation failures for part of a dataset and confirming successful items are retained in output.
+- [ ] T021 [P] [US3] Write failing unit tests for Preserve Run Continuity on Translation Failures in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.UnitTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T022 [P] [US3] Write failing integration tests for Preserve Run Continuity on Translation Failures in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.IntegrationTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
-### Tests for User Story 3 (REQUIRED)
+### Implementation
 
-- [ ] T022 [P] [US3] Write failing unit tests for Preserve Run Continuity on Translation Failures in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/Story3/Story3UnitTests.cs
-- [ ] T023 [P] [US3] Write failing integration tests for Preserve Run Continuity on Translation Failures in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/Story3/Story3IntegrationTests.cs
-
-### Implementation for User Story 3
-
-- [ ] T024 [US3] Create story 3 domain model for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story3/Story3Model.cs
-- [ ] T025 [US3] Implement story 3 service workflow for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story3/Story3Service.cs
-- [ ] T026 [US3] Implement story 3 adapter endpoint or command mapping in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story3/Story3Adapter.cs
-- [ ] T027 [US3] Add story 3 observability and error mapping in src/FlashyCardMaker.Infrastructure/Observability/001-google-translation-support/Story3Observability.cs
-
-**Checkpoint**: User Story 3 is independently functional and testable.
+- [ ] T023 [US3] Implement happy-path flow for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.HappyPathService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T024 [US3] Implement validation/error flow for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.ValidationService.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T025 [US3] Implement edge-case handler for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.Core/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.EdgeCasePolicy.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T026 [US3] Implement adapter mapping for Preserve Run Continuity on Translation Failures in src/FlashyCardMaker.UI.Cli/Features/001-google-translation-support/Story3/PreserveRunContinuityOnTranslationFailures.Adapter.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
 ---
 
 ## Final Phase: Polish & Cross-Cutting Concerns
 
-**Purpose**: Apply quality checks and hardening across all completed stories.
-
-- [ ] T028 [P] Run quickstart validation and update steps in specs/001-google-translation-support/quickstart.md
-- [ ] T029 [P] Add cross-story regression test coverage in tests/FlashyCardMaker.Core.UnitTests/Features/001-google-translation-support/CrossStoryRegressionTests.cs
-- [ ] T030 Perform performance and reliability tuning for feature workflows in src/FlashyCardMaker.Core/Features/001-google-translation-support/PerformanceTuning.md
-- [ ] T031 Update feature implementation notes and decisions in specs/001-google-translation-support/research.md
+- [ ] T027 [P] Add measurable performance threshold tests in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/GoogleTranslationSupport.PerformanceThresholdTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, SC-001, SC-002, SC-003, SC-004, SC-005)
+- [ ] T028 [P] Add measurable security validation tests in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/GoogleTranslationSupport.SecurityValidationTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, SC-001, SC-002, SC-003, SC-004, SC-005)
+- [ ] T029 [P] Add measurable observability validation tests in tests/FlashyCardMaker.Infrastructure.IntegrationTests/Features/001-google-translation-support/GoogleTranslationSupport.ObservabilityValidationTests.cs (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, SC-001, SC-002, SC-003, SC-004, SC-005)
+- [ ] T030 Mitigate integration failure risk in src/FlashyCardMaker.Core/Features/001-google-translation-support/GoogleTranslationSupport.IntegrationRiskMitigation.md (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
+- [ ] T031 Mitigate cross-module drift risk in src/FlashyCardMaker.Core/Features/001-google-translation-support/GoogleTranslationSupport.DriftRiskMitigation.md (FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010)
 
 ---
 
 ## Dependencies & Execution Order
 
-- Setup (Phase 1) has no dependencies.
-- Foundational (Phase 2) depends on Setup and blocks all user stories.
-- User story phases depend on Foundational and can proceed in priority order or in parallel by team capacity.
-- Final Phase depends on completion of selected user stories.
-
-### User Story Completion Order
-
-- US1 (P1): Translate Flashcard Text Using Google Service
-- US2 (P2): Configure and Validate Google Translation Access
-- US3 (P3): Preserve Run Continuity on Translation Failures
-
-### Parallel Opportunities
-
-- Tasks marked [P] can run in parallel when they touch different files and have no unmet dependencies.
-- Within each story, failing test tasks can run in parallel first.
-- After Foundational phase, user stories can be implemented concurrently.
-
-## Parallel Example: User Story 1
-
-```bash
-Task: "Write failing unit tests for User Story 1"
-Task: "Write failing integration tests for User Story 1"
-```
-
-## Implementation Strategy
-
-### MVP First
-1. Complete Phase 1 and Phase 2.
-2. Deliver User Story 1 and validate it independently.
-3. Continue with lower-priority stories incrementally.
+- Setup -> Foundational -> User Stories -> Final Phase.
+- Tasks marked [P] are parallelizable.

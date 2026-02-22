@@ -1,7 +1,7 @@
 # Implementation Plan: Quality and Testability Standards
 
-**Branch**: `001-quality-testability-standards` | **Date**: 2026-02-22 | **Spec**: `F:\dev\C#\flashy-card-maker\specs\001-quality-testability-standards\spec.md`
-**Input**: Feature specification from `F:\dev\C#\flashy-card-maker\specs\001-quality-testability-standards\spec.md`
+**Branch**: `001-quality-testability-standards` | **Date**: 2026-02-22 | **Spec**: `specs/001-quality-testability-standards/spec.md`
+**Input**: Feature specification from `specs/001-quality-testability-standards/spec.md`
 
 ## Summary
 

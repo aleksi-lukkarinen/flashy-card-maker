@@ -85,7 +85,7 @@ As a maintainer, I want to add a new configuration source type without changing 
 - **FR-008**: System MUST provide actionable error messages that identify invalid settings and their source.
 - **FR-009**: System MUST provide an effective configuration view that includes resolved value and source origin for each non-sensitive setting.
 - **FR-010**: System MUST allow adding a new configuration source type as an independent module without modifying existing source modules.
-- **FR-011**: System MUST preserve existing behavior for current sources when additional source modules are added.
+- **FR-011**: System MUST preserve existing behavior for current with defined acceptance checks sources when additional source modules are added.
 - **FR-012**: System MUST support source modules being enabled or disabled through configuration.
 
 ### Key Entities *(include if feature involves data)*

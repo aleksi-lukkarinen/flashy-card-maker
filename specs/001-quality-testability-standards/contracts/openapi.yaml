@@ -1,171 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Quality Governance Service Contract
-  version: 0.1.0
-  description: Internal contract for running and reporting code quality governance checks.
+  title: 
+Quality and Testability Standards
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-quality-testability-standards
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /quality/rules:
-    get:
-      summary: List active quality rules
-      operationId: listQualityRules
-      responses:
-        '200':
-          description: Active rule catalog
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/QualityRule'
-  /quality/runs:
-    post:
-      summary: Start a quality governance run
-      operationId: startQualityRun
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/QualityRunRequest'
-      responses:
-        '202':
-          description: Quality run accepted
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/QualityRunAccepted'
-  /quality/runs/{runId}:
-    get:
-      summary: Get quality run report
-      operationId: getQualityRunReport
-      parameters:
-        - name: runId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Quality run report
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/QualityRunReport'
-        '404':
-          description: Run not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-  /quality/findings/{findingId}/waive:
-    post:
-      summary: Waive a finding with justification
-      operationId: waiveFinding
-      parameters:
-        - name: findingId
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/WaiveFindingRequest'
-      responses:
-        '200':
-          description: Finding waived
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/QualityFinding'
+  /quality-testability-standards/develop-maintainable-responsibility-focused-components:     post:       summary: Execute User Story 1 workflow       operationId: executeQualityTestabilityStandardsStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/QualityTestabilityStandardsStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/QualityTestabilityStandardsStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /quality-testability-standards/execute-reliable-automated-tests-without-hidden-coupling:     post:       summary: Execute User Story 2 workflow       operationId: executeQualityTestabilityStandardsStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/QualityTestabilityStandardsStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/QualityTestabilityStandardsStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /quality-testability-standards/configure-behavior-externally-for-different-environments:     post:       summary: Execute User Story 3 workflow       operationId: executeQualityTestabilityStandardsStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/QualityTestabilityStandardsStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/QualityTestabilityStandardsStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    QualityRule:
-      type: object
-      required: [ruleId, title, category, severity, enabled]
-      properties:
-        ruleId:
-          type: string
-        title:
-          type: string
-        category:
-          type: string
-          enum: [Maintainability, Testability, Configuration, PatternUsage, Security]
-        severity:
-          type: string
-          enum: [Info, Warning, Error]
-        description:
-          type: string
-        enabled:
-          type: boolean
-    QualityRunRequest:
-      type: object
-      required: [scope]
-      properties:
-        scope:
-          type: string
-        includeCategories:
-          type: array
-          items:
-            type: string
-        failOnSeverity:
-          type: string
-          enum: [Warning, Error]
-    QualityRunAccepted:
-      type: object
-      required: [runId, status]
-      properties:
-        runId:
-          type: string
-        status:
-          type: string
-          enum: [Accepted]
-    QualityFinding:
-      type: object
-      required: [findingId, ruleId, severity, message, status]
-      properties:
-        findingId:
-          type: string
-        ruleId:
-          type: string
-        severity:
-          type: string
-          enum: [Info, Warning, Error]
-        message:
-          type: string
-        evidence:
-          type: string
-        status:
-          type: string
-          enum: [Open, Waived, Resolved]
-    QualityRunReport:
-      type: object
-      required: [runId, result, findings]
-      properties:
-        runId:
-          type: string
-        result:
-          type: string
-          enum: [Pass, Fail]
-        findings:
-          type: array
-          items:
-            $ref: '#/components/schemas/QualityFinding'
-        summary:
-          type: object
-          additionalProperties: true
-    WaiveFindingRequest:
-      type: object
-      required: [reason, approvedBy]
-      properties:
-        reason:
-          type: string
-        approvedBy:
-          type: string
+    QualityTestabilityStandardsStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     QualityTestabilityStandardsStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    QualityTestabilityStandardsStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     QualityTestabilityStandardsStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    QualityTestabilityStandardsStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     QualityTestabilityStandardsStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

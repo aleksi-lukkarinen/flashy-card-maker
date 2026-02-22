@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: VBee GetVoices Support Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-vbee-getvoices-support feature.
+  title: 
+VBee GetVoices Support
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-vbee-getvoices-support
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /vbee-getvoices-support/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executevbee-getvoices-supportWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /vbee-getvoices-support/fetch-vbee-voices-for-tts-selection:     post:       summary: Execute User Story 1 workflow       operationId: executeVbeeGetvoicesSupportStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/VbeeGetvoicesSupportStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/VbeeGetvoicesSupportStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /vbee-getvoices-support/enforce-required-vbee-request-contract:     post:       summary: Execute User Story 2 workflow       operationId: executeVbeeGetvoicesSupportStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/VbeeGetvoicesSupportStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/VbeeGetvoicesSupportStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /vbee-getvoices-support/handle-vbee-errors-with-actionable-feedback:     post:       summary: Execute User Story 3 workflow       operationId: executeVbeeGetvoicesSupportStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/VbeeGetvoicesSupportStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/VbeeGetvoicesSupportStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    VbeeGetvoicesSupportStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     VbeeGetvoicesSupportStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    VbeeGetvoicesSupportStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     VbeeGetvoicesSupportStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    VbeeGetvoicesSupportStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     VbeeGetvoicesSupportStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

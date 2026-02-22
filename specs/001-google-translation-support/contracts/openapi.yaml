@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Google Translation Support Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-google-translation-support feature.
+  title: 
+Google Translation Support
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-google-translation-support
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /google-translation-support/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executegoogle-translation-supportWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /google-translation-support/translate-flashcard-text-using-google-service:     post:       summary: Execute User Story 1 workflow       operationId: executeGoogleTranslationSupportStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/GoogleTranslationSupportStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/GoogleTranslationSupportStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /google-translation-support/configure-and-validate-google-translation-access:     post:       summary: Execute User Story 2 workflow       operationId: executeGoogleTranslationSupportStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/GoogleTranslationSupportStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/GoogleTranslationSupportStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /google-translation-support/preserve-run-continuity-on-translation-failures:     post:       summary: Execute User Story 3 workflow       operationId: executeGoogleTranslationSupportStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/GoogleTranslationSupportStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/GoogleTranslationSupportStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    GoogleTranslationSupportStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     GoogleTranslationSupportStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    GoogleTranslationSupportStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     GoogleTranslationSupportStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    GoogleTranslationSupportStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     GoogleTranslationSupportStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

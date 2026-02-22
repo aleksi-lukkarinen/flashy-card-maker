@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Audio Filename Format Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-audio-filename-format feature.
+  title: 
+Audio Filename Format
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-audio-filename-format
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /audio-filename-format/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executeaudio-filename-formatWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /audio-filename-format/generate-deterministic-human-readable-audio-filenames:     post:       summary: Execute User Story 1 workflow       operationId: executeAudioFilenameFormatStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/AudioFilenameFormatStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/AudioFilenameFormatStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /audio-filename-format/produce-valid-slug-from-spoken-text:     post:       summary: Execute User Story 2 workflow       operationId: executeAudioFilenameFormatStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/AudioFilenameFormatStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/AudioFilenameFormatStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /audio-filename-format/preserve-uniqueness-across-languages-and-formats:     post:       summary: Execute User Story 3 workflow       operationId: executeAudioFilenameFormatStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/AudioFilenameFormatStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/AudioFilenameFormatStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    AudioFilenameFormatStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     AudioFilenameFormatStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    AudioFilenameFormatStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     AudioFilenameFormatStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    AudioFilenameFormatStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     AudioFilenameFormatStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

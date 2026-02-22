@@ -1,55 +1,102 @@
 openapi: 3.0.3
 info:
   title: Modular Configuration Sources Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-config-sources-modular feature.
+  version: 0.2.0
+  description: Internal contract boundary for 001-config-sources-modular workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /config-sources-modular/execute:
+  /config/resolve-effective:
     post:
-      summary: Execute feature workflow
-      operationId: executeconfig-sources-modularWorkflow
+      summary: Merge and validate configuration from active sources
+      operationId: resolveEffectiveConfiguration
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExecuteRequest'
+              $ref: '#/components/schemas/ConfigMergeRequest'
       responses:
         '200':
-          description: Execution completed
+          description: Effective configuration resolved
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecuteResult'
+                $ref: '#/components/schemas/EffectiveConfigurationResponse'
         '400':
           description: Validation failed
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /config/sources/register:
+    post:
+      summary: Register a new configuration source type
+      operationId: registerConfigurationSource
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationSourceRegistrationRequest'
+      responses:
+        '200':
+          description: Source registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigurationSourceRegistrationResult'
 components:
   schemas:
-    ExecuteRequest:
+    ConfigMergeRequest:
       type: object
-      required: [parameters]
+      required: [activeSources]
       properties:
-        parameters:
+        activeSources:
+          type: array
+          items:
+            type: string
+        overrideValues:
           type: object
           additionalProperties: true
-    ExecuteResult:
+    EffectiveConfigurationResponse:
       type: object
-      required: [status, messages]
+      required: [status, values, origins]
       properties:
         status:
           type: string
           enum: [Success, PartialSuccess, Failed]
+        values:
+          type: object
+          additionalProperties: true
+        origins:
+          type: object
+          additionalProperties:
+            type: string
         messages:
           type: array
           items:
             type: string
-        artifacts:
+    ConfigurationSourceRegistrationRequest:
+      type: object
+      required: [sourceType, sourceIdentifier]
+      properties:
+        sourceType:
+          type: string
+        sourceIdentifier:
+          type: string
+        precedence:
+          type: integer
+    ConfigurationSourceRegistrationResult:
+      type: object
+      required: [status, sourceType]
+      properties:
+        status:
+          type: string
+          enum: [Success, Failed]
+        sourceType:
+          type: string
+        messages:
           type: array
           items:
             type: string

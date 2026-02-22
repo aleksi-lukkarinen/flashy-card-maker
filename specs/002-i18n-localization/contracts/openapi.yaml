@@ -1,55 +1,87 @@
 openapi: 3.0.3
 info:
-  title: Internationalization & Localization Readiness Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 002-i18n-localization feature.
+  title: I18N Localization Contract
+  version: 0.2.0
+  description: Internal contract boundary for 002-i18n-localization workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /i18n-localization/execute:
+  /localization/select-locale:
     post:
-      summary: Execute feature workflow
-      operationId: executei18n-localizationWorkflow
+      summary: Select runtime locale for the current workflow
+      operationId: selectLocalizationLocale
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ExecuteRequest'
+              $ref: '#/components/schemas/LocalizationRequest'
       responses:
         '200':
-          description: Execution completed
+          description: Locale selected
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ExecuteResult'
+                $ref: '#/components/schemas/LocalizationBundleResult'
         '400':
           description: Validation failed
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /localization/resolve-bundle:
+    post:
+      summary: Resolve localized content bundle for requested scope
+      operationId: resolveLocalizationBundle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LocalizationBundleRequest'
+      responses:
+        '200':
+          description: Bundle resolved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocalizationBundleResult'
 components:
   schemas:
-    ExecuteRequest:
+    LocalizationRequest:
       type: object
-      required: [parameters]
+      required: [localeCode]
       properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
+        localeCode:
+          type: string
+        fallbackLocaleCode:
+          type: string
+    LocalizationBundleRequest:
       type: object
-      required: [status, messages]
+      required: [localeCode, scope]
+      properties:
+        localeCode:
+          type: string
+        scope:
+          type: string
+        keys:
+          type: array
+          items:
+            type: string
+    LocalizationBundleResult:
+      type: object
+      required: [status, localeCode, messages]
       properties:
         status:
           type: string
           enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
+        localeCode:
+          type: string
+        entries:
+          type: object
+          additionalProperties:
             type: string
-        artifacts:
+        messages:
           type: array
           items:
             type: string

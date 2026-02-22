@@ -1,58 +1,23 @@
 openapi: 3.0.3
 info:
-  title: Rotating Diagnostic Logging Contract
-  version: 0.1.0
-  description: Internal contract boundary for the 001-rotating-diagnostic-logging feature.
+  title: 
+Rotating Diagnostic Logging
+ Contract
+  version: 0.1.1
+  description: Internal contract boundary for 
+001-rotating-diagnostic-logging
+ workflows.
 servers:
   - url: http://localhost/internal
 paths:
-  /rotating-diagnostic-logging/execute:
-    post:
-      summary: Execute feature workflow
-      operationId: executerotating-diagnostic-loggingWorkflow
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExecuteRequest'
-      responses:
-        '200':
-          description: Execution completed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExecuteResult'
-        '400':
-          description: Validation failed
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+  /rotating-diagnostic-logging/configure-detailed-rotating-logs:     post:       summary: Execute User Story 1 workflow       operationId: executeRotatingDiagnosticLoggingStory1       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RotatingDiagnosticLoggingStory1Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RotatingDiagnosticLoggingStory1Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /rotating-diagnostic-logging/capture-operation-start-end-and-duration:     post:       summary: Execute User Story 2 workflow       operationId: executeRotatingDiagnosticLoggingStory2       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RotatingDiagnosticLoggingStory2Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RotatingDiagnosticLoggingStory2Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
+  /rotating-diagnostic-logging/log-remote-request-response-diagnostics-safely:     post:       summary: Execute User Story 3 workflow       operationId: executeRotatingDiagnosticLoggingStory3       requestBody:         required: true         content:           application/json:             schema:               $ref: '#/components/schemas/RotatingDiagnosticLoggingStory3Request'       responses:         '200':           description: Story workflow completed           content:             application/json:               schema:                 $ref: '#/components/schemas/RotatingDiagnosticLoggingStory3Result'         '400':           description: Validation failed           content:             application/json:               schema:                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ExecuteRequest:
-      type: object
-      required: [parameters]
-      properties:
-        parameters:
-          type: object
-          additionalProperties: true
-    ExecuteResult:
-      type: object
-      required: [status, messages]
-      properties:
-        status:
-          type: string
-          enum: [Success, PartialSuccess, Failed]
-        messages:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            type: string
+    RotatingDiagnosticLoggingStory1Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RotatingDiagnosticLoggingStory1Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    RotatingDiagnosticLoggingStory2Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RotatingDiagnosticLoggingStory2Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
+    RotatingDiagnosticLoggingStory3Request:       type: object       required: [parameters]       properties:         parameters:           type: object           additionalProperties: true     RotatingDiagnosticLoggingStory3Result:       type: object       required: [status, messages]       properties:         status:           type: string           enum: [Success, PartialSuccess, Failed]         messages:           type: array           items:             type: string         artifacts:           type: array           items:             type: string
     ErrorResponse:
       type: object
       required: [code, message]

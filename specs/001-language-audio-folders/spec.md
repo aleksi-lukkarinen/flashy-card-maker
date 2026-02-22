@@ -77,7 +77,7 @@ As a user, I want clear reporting of where files were saved per language so I ca
 
 - **FR-001**: Users MUST be able to configure an audio output folder per language.
 - **FR-002**: System MUST route each generated audio file to the folder configured for that file’s language.
-- **FR-003**: System MUST validate folder mappings for languages involved in the current run before writing files.
+- **FR-003**: System MUST validate folder mappings for languages involved in the current with defined acceptance checks run before writing files.
 - **FR-004**: System MUST detect and report invalid, missing, or non-writable mapped folders with language-specific context.
 - **FR-005**: System MUST allow relative and absolute folder paths according to application path policy.
 - **FR-006**: System MUST preserve existing files and avoid unintended overwrites when multiple languages share a folder.

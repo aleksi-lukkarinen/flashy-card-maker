@@ -1,7 +1,7 @@
 # Implementation Plan: Runtime Error Recovery for Parallel Jobs
 
-**Branch**: $feature | **Date**: 2026-02-22 | **Spec**: $specPath
-**Input**: Feature specification from $specPath
+**Branch**: `001-runtime-error-recovery` | **Date**: 2026-02-22 | **Spec**: `specs/001-runtime-error-recovery/spec.md`
+**Input**: Feature specification from `specs/001-runtime-error-recovery/spec.md`
 
 ## Summary
 
@@ -19,6 +19,11 @@ Implement Runtime Error Recovery for Parallel Jobs with a modular architecture, 
 **Constraints**: No secrets in code; fully configurable runtime behavior; maintainable module boundaries  
 **Scale/Scope**: First production slice for this feature as defined by the spec
 
+### Implementation Decisions
+
+- Use Polly for remote-call resilience and retry policy composition.
+- Use dependency injection in the CLI composition root for services, resilience policies, and logging.
+
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
@@ -33,30 +38,30 @@ Implement Runtime Error Recovery for Parallel Jobs with a modular architecture, 
 
 ### Documentation (this feature)
 
-`	ext
+```text
 specs/001-runtime-error-recovery/
 |-- plan.md
 |-- research.md
 |-- data-model.md
 |-- quickstart.md
 |-- contracts/
-|   -- openapi.yaml
--- tasks.md
-`
+|   `-- openapi.yaml
+`-- tasks.md
+```
 
 ### Source Code (repository root)
 
-`	ext
+```text
 src/
 |-- FlashyCardMaker.Core/
 |-- FlashyCardMaker.Infrastructure/
--- FlashyCardMaker.UI.Cli/
+`-- FlashyCardMaker.UI.Cli/
 
 tests/
 |-- FlashyCardMaker.Core.UnitTests/
 |-- FlashyCardMaker.Infrastructure.IntegrationTests/
--- FlashyCardMaker.UI.Cli.Tests/
-`
+`-- FlashyCardMaker.UI.Cli.Tests/
+```
 
 **Structure Decision**: Reuse modular structure and implement this feature through core services plus adapter wiring.
 
