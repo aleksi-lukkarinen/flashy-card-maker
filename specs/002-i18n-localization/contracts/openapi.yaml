@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Internationalization & Localization Readiness Contract
+  version: 0.1.0
+  description: Internal contract boundary for the 002-i18n-localization feature.
+servers:
+  - url: http://localhost/internal
+paths:
+  /i18n-localization/execute:
+    post:
+      summary: Execute feature workflow
+      operationId: executei18n-localizationWorkflow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteRequest'
+      responses:
+        '200':
+          description: Execution completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecuteResult'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ExecuteRequest:
+      type: object
+      required: [parameters]
+      properties:
+        parameters:
+          type: object
+          additionalProperties: true
+    ExecuteResult:
+      type: object
+      required: [status, messages]
+      properties:
+        status:
+          type: string
+          enum: [Success, PartialSuccess, Failed]
+        messages:
+          type: array
+          items:
+            type: string
+        artifacts:
+          type: array
+          items:
+            type: string
+    ErrorResponse:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string

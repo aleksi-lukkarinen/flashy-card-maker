@@ -1,11 +1,11 @@
-# Implementation Plan: Runtime Error Recovery for Parallel Jobs
+# Implementation Plan: Internationalization & Localization Readiness
 
 **Branch**: $feature | **Date**: 2026-02-22 | **Spec**: $specPath
 **Input**: Feature specification from $specPath
 
 ## Summary
 
-Implement Runtime Error Recovery for Parallel Jobs with a modular architecture, TDD-first delivery, integration coverage for all I/O boundaries, configurable logging, and secure runtime configuration handling.
+Implement Internationalization & Localization Readiness with a modular architecture, TDD-first delivery, integration coverage for all I/O boundaries, configurable logging, and secure runtime configuration handling.
 
 ## Technical Context
 
@@ -34,7 +34,7 @@ Implement Runtime Error Recovery for Parallel Jobs with a modular architecture, 
 ### Documentation (this feature)
 
 `	ext
-specs/001-runtime-error-recovery/
+specs/002-i18n-localization/
 |-- plan.md
 |-- research.md
 |-- data-model.md

@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: CSV Output Export Contract
+  version: 0.1.0
+  description: Internal contract boundary for the 001-csv-output-export feature.
+servers:
+  - url: http://localhost/internal
+paths:
+  /csv-output-export/execute:
+    post:
+      summary: Execute feature workflow
+      operationId: executecsv-output-exportWorkflow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteRequest'
+      responses:
+        '200':
+          description: Execution completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecuteResult'
+        '400':
+          description: Validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ExecuteRequest:
+      type: object
+      required: [parameters]
+      properties:
+        parameters:
+          type: object
+          additionalProperties: true
+    ExecuteResult:
+      type: object
+      required: [status, messages]
+      properties:
+        status:
+          type: string
+          enum: [Success, PartialSuccess, Failed]
+        messages:
+          type: array
+          items:
+            type: string
+        artifacts:
+          type: array
+          items:
+            type: string
+    ErrorResponse:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
