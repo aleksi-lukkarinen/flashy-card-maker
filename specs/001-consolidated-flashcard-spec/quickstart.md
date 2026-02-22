@@ -60,3 +60,8 @@ Expected behavior: previously successful jobs are skipped and only eligible unfi
 - Confirm log location and rotation follow runtime configuration.
 - Confirm no secrets appear in logs, validation messages, or run summaries.
 - Confirm localized user-facing output falls back to default locale when translations are missing.
+
+## 8. Current Execution Notes
+
+- In constrained sandbox environments, set `DOTNET_CLI_HOME`, `TMP`, and `TEMP` to workspace-local folders before running `dotnet` commands.
+- If package restore is blocked by network policy, run source-level validation first and execute full restore/build in a network-enabled environment.

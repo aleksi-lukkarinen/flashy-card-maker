@@ -54,3 +54,17 @@ CodeCoverage/
 # MSTest Test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+
+# Local tooling and temp artifacts
+.dotnet/
+.tmp/
+.vs/
+
+# .NET user-specific files
+*.user
+*.suo
+packages/
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db

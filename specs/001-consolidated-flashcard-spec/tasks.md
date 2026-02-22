@@ -24,11 +24,11 @@
 
 **Purpose**: Initialize solution skeleton and baseline test/config tooling for consolidated implementation.
 
-- [ ] T001 Create project skeleton folders in `src/FlashyCardMaker.Core/`, `src/FlashyCardMaker.Infrastructure/`, and `src/FlashyCardMaker.UI.Cli/`
-- [ ] T002 Create test project skeleton folders in `tests/FlashyCardMaker.Core.UnitTests/`, `tests/FlashyCardMaker.Infrastructure.IntegrationTests/`, `tests/FlashyCardMaker.Contracts.Tests/`, and `tests/FlashyCardMaker.UI.Cli.Tests/`
-- [ ] T003 [P] Add solution and project reference manifest in `FlashyCardMaker.sln`
-- [ ] T004 [P] Add baseline test configuration and run settings in `tests/Directory.Build.props`
-- [ ] T005 [P] Add baseline logging and redaction config sample in `src/FlashyCardMaker.UI.Cli/appsettings.json`
+- [X] T001 Create project skeleton folders in `src/FlashyCardMaker.Core/`, `src/FlashyCardMaker.Infrastructure/`, and `src/FlashyCardMaker.UI.Cli/`
+- [X] T002 Create test project skeleton folders in `tests/FlashyCardMaker.Core.UnitTests/`, `tests/FlashyCardMaker.Infrastructure.IntegrationTests/`, `tests/FlashyCardMaker.Contracts.Tests/`, and `tests/FlashyCardMaker.UI.Cli.Tests/`
+- [X] T003 [P] Add solution and project reference manifest in `FlashyCardMaker.sln`
+- [X] T004 [P] Add baseline test configuration and run settings in `tests/Directory.Build.props`
+- [X] T005 [P] Add baseline logging and redaction config sample in `src/FlashyCardMaker.UI.Cli/appsettings.json`
 
 ---
 
@@ -38,17 +38,17 @@
 
 **CRITICAL**: No user story implementation starts before this phase is complete.
 
-- [ ] T006 Implement shared domain abstractions for run orchestration in `src/FlashyCardMaker.Core/Abstractions/IRunOrchestrator.cs`
-- [ ] T007 [P] Implement shared run/result enums and constants in `src/FlashyCardMaker.Core/Models/RunStatus.cs`
-- [ ] T008 [P] Implement effective configuration and source-origin model in `src/FlashyCardMaker.Core/Models/EffectiveConfigurationSnapshot.cs`
-- [ ] T009 [P] Implement validation issue and error taxonomy model in `src/FlashyCardMaker.Core/Models/ValidationIssue.cs`
-- [ ] T010 Implement configuration merge service with deterministic precedence in `src/FlashyCardMaker.Infrastructure/Configuration/ConfigurationMergeService.cs`
-- [ ] T011 [P] Implement centralized sensitive-value redaction helper in `src/FlashyCardMaker.Infrastructure/Logging/RedactionPolicy.cs`
-- [ ] T012 [P] Implement logging setup supporting required levels and rotation options in `src/FlashyCardMaker.Infrastructure/Logging/LoggingBootstrapper.cs`
-- [ ] T013 Implement base run-state repository interface and file-backed repository in `src/FlashyCardMaker.Infrastructure/Persistence/FileRunStateRepository.cs`
-- [ ] T014 Implement CLI command root, global options, and DI bootstrap in `src/FlashyCardMaker.UI.Cli/Program.cs`
-- [ ] T015 Add foundational unit tests for configuration precedence in `tests/FlashyCardMaker.Core.UnitTests/ConfigurationMergeServiceTests.cs`
-- [ ] T016 Add foundational integration tests for file run-state repository in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/FileRunStateRepositoryTests.cs`
+- [X] T006 Implement shared domain abstractions for run orchestration in `src/FlashyCardMaker.Core/Abstractions/IRunOrchestrator.cs`
+- [X] T007 [P] Implement shared run/result enums and constants in `src/FlashyCardMaker.Core/Models/RunStatus.cs`
+- [X] T008 [P] Implement effective configuration and source-origin model in `src/FlashyCardMaker.Core/Models/EffectiveConfigurationSnapshot.cs`
+- [X] T009 [P] Implement validation issue and error taxonomy model in `src/FlashyCardMaker.Core/Models/ValidationIssue.cs`
+- [X] T010 Implement configuration merge service with deterministic precedence in `src/FlashyCardMaker.Infrastructure/Configuration/ConfigurationMergeService.cs`
+- [X] T011 [P] Implement centralized sensitive-value redaction helper in `src/FlashyCardMaker.Infrastructure/Logging/RedactionPolicy.cs`
+- [X] T012 [P] Implement logging setup supporting required levels and rotation options in `src/FlashyCardMaker.Infrastructure/Logging/LoggingBootstrapper.cs`
+- [X] T013 Implement base run-state repository interface and file-backed repository in `src/FlashyCardMaker.Infrastructure/Persistence/FileRunStateRepository.cs`
+- [X] T014 Implement CLI command root, global options, and DI bootstrap in `src/FlashyCardMaker.UI.Cli/Program.cs`
+- [X] T015 Add foundational unit tests for configuration precedence in `tests/FlashyCardMaker.Core.UnitTests/ConfigurationMergeServiceTests.cs`
+- [X] T016 Add foundational integration tests for file run-state repository in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/FileRunStateRepositoryTests.cs`
 
 **Checkpoint**: Foundation complete; user stories can proceed.
 
@@ -62,25 +62,25 @@
 
 ### Tests for User Story 1 (REQUIRED)
 
-- [ ] T017 [P] [US1] Add contract tests for start run endpoint in `tests/FlashyCardMaker.Contracts.Tests/StartRunContractTests.cs`
-- [ ] T018 [P] [US1] Add contract tests for run summary endpoint in `tests/FlashyCardMaker.Contracts.Tests/RunSummaryContractTests.cs`
-- [ ] T019 [P] [US1] Add integration test for end-to-end generation with multiple outputs in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/GenerationPipelineIntegrationTests.cs`
-- [ ] T020 [P] [US1] Add CLI integration test for `generate` command happy path in `tests/FlashyCardMaker.UI.Cli.Tests/GenerateCommandTests.cs`
-- [ ] T021 [P] [US1] Add unit tests for generation record normalization in `tests/FlashyCardMaker.Core.UnitTests/GenerationRecordNormalizerTests.cs`
+- [X] T017 [P] [US1] Add contract tests for start run endpoint in `tests/FlashyCardMaker.Contracts.Tests/StartRunContractTests.cs`
+- [X] T018 [P] [US1] Add contract tests for run summary endpoint in `tests/FlashyCardMaker.Contracts.Tests/RunSummaryContractTests.cs`
+- [X] T019 [P] [US1] Add integration test for end-to-end generation with multiple outputs in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/GenerationPipelineIntegrationTests.cs`
+- [X] T020 [P] [US1] Add CLI integration test for `generate` command happy path in `tests/FlashyCardMaker.UI.Cli.Tests/GenerateCommandTests.cs`
+- [X] T021 [P] [US1] Add unit tests for generation record normalization in `tests/FlashyCardMaker.Core.UnitTests/GenerationRecordNormalizerTests.cs`
 
 ### Implementation for User Story 1
 
-- [ ] T022 [P] [US1] Implement generation run aggregate model in `src/FlashyCardMaker.Core/Models/GenerationRun.cs`
-- [ ] T023 [P] [US1] Implement generation record model in `src/FlashyCardMaker.Core/Models/GenerationRecord.cs`
-- [ ] T024 [P] [US1] Implement language-pair assignment model in `src/FlashyCardMaker.Core/Models/LanguagePairAssignment.cs`
-- [ ] T025 [US1] Implement generation record normalizer service in `src/FlashyCardMaker.Core/Services/GenerationRecordNormalizer.cs`
-- [ ] T026 [US1] Implement canonical run orchestrator for translation/audio/output fan-out in `src/FlashyCardMaker.Core/Workflows/GenerationRunOrchestrator.cs`
-- [ ] T027 [P] [US1] Implement output format dispatcher in `src/FlashyCardMaker.Infrastructure/Providers/OutputFormatDispatcher.cs`
-- [ ] T028 [P] [US1] Implement CSV export writer with stable column mapping in `src/FlashyCardMaker.Infrastructure/Providers/CsvExportWriter.cs`
-- [ ] T029 [US1] Implement audio output destination resolver in `src/FlashyCardMaker.Infrastructure/Providers/AudioOutputPathResolver.cs`
-- [ ] T030 [US1] Implement deterministic audio filename generator in `src/FlashyCardMaker.Core/Services/AudioFilenameGenerator.cs`
-- [ ] T031 [US1] Implement `generate` command handler and mapping in `src/FlashyCardMaker.UI.Cli/Commands/GenerateCommand.cs`
-- [ ] T032 [US1] Implement run summary presenter for output outcomes in `src/FlashyCardMaker.UI.Cli/Presentation/RunSummaryPresenter.cs`
+- [X] T022 [P] [US1] Implement generation run aggregate model in `src/FlashyCardMaker.Core/Models/GenerationRun.cs`
+- [X] T023 [P] [US1] Implement generation record model in `src/FlashyCardMaker.Core/Models/GenerationRecord.cs`
+- [X] T024 [P] [US1] Implement language-pair assignment model in `src/FlashyCardMaker.Core/Models/LanguagePairAssignment.cs`
+- [X] T025 [US1] Implement generation record normalizer service in `src/FlashyCardMaker.Core/Services/GenerationRecordNormalizer.cs`
+- [X] T026 [US1] Implement canonical run orchestrator for translation/audio/output fan-out in `src/FlashyCardMaker.Core/Workflows/GenerationRunOrchestrator.cs`
+- [X] T027 [P] [US1] Implement output format dispatcher in `src/FlashyCardMaker.Infrastructure/Providers/OutputFormatDispatcher.cs`
+- [X] T028 [P] [US1] Implement CSV export writer with stable column mapping in `src/FlashyCardMaker.Infrastructure/Providers/CsvExportWriter.cs`
+- [X] T029 [US1] Implement audio output destination resolver in `src/FlashyCardMaker.Infrastructure/Providers/AudioOutputPathResolver.cs`
+- [X] T030 [US1] Implement deterministic audio filename generator in `src/FlashyCardMaker.Core/Services/AudioFilenameGenerator.cs`
+- [X] T031 [US1] Implement `generate` command handler and mapping in `src/FlashyCardMaker.UI.Cli/Commands/GenerateCommand.cs`
+- [X] T032 [US1] Implement run summary presenter for output outcomes in `src/FlashyCardMaker.UI.Cli/Presentation/RunSummaryPresenter.cs`
 
 **Checkpoint**: US1 is independently functional and testable (MVP).
 
@@ -94,24 +94,24 @@
 
 ### Tests for User Story 2 (REQUIRED)
 
-- [ ] T033 [P] [US2] Add contract tests for validate endpoint in `tests/FlashyCardMaker.Contracts.Tests/ValidateRunContractTests.cs`
-- [ ] T034 [P] [US2] Add contract tests for voice discovery response mapping in `tests/FlashyCardMaker.Contracts.Tests/VoiceDiscoveryContractTests.cs`
-- [ ] T035 [P] [US2] Add integration tests for provider preflight validation failures in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/ProviderValidationIntegrationTests.cs`
-- [ ] T036 [P] [US2] Add CLI tests for `validate` and `voices` commands in `tests/FlashyCardMaker.UI.Cli.Tests/ValidationAndVoiceCommandsTests.cs`
-- [ ] T037 [P] [US2] Add unit tests for secret redaction in validation and diagnostics in `tests/FlashyCardMaker.Core.UnitTests/SensitiveRedactionTests.cs`
+- [X] T033 [P] [US2] Add contract tests for validate endpoint in `tests/FlashyCardMaker.Contracts.Tests/ValidateRunContractTests.cs`
+- [X] T034 [P] [US2] Add contract tests for voice discovery response mapping in `tests/FlashyCardMaker.Contracts.Tests/VoiceDiscoveryContractTests.cs`
+- [X] T035 [P] [US2] Add integration tests for provider preflight validation failures in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/ProviderValidationIntegrationTests.cs`
+- [X] T036 [P] [US2] Add CLI tests for `validate` and `voices` commands in `tests/FlashyCardMaker.UI.Cli.Tests/ValidationAndVoiceCommandsTests.cs`
+- [X] T037 [P] [US2] Add unit tests for secret redaction in validation and diagnostics in `tests/FlashyCardMaker.Core.UnitTests/SensitiveRedactionTests.cs`
 
 ### Implementation for User Story 2
 
-- [ ] T038 [P] [US2] Implement provider configuration model in `src/FlashyCardMaker.Core/Models/ProviderConfiguration.cs`
-- [ ] T039 [P] [US2] Implement voice catalog item model in `src/FlashyCardMaker.Core/Models/VoiceCatalogItem.cs`
-- [ ] T040 [US2] Implement run preflight validator for language/service/output checks in `src/FlashyCardMaker.Core/Services/RunPreflightValidator.cs`
-- [ ] T041 [US2] Implement voice discovery service interface and coordinator in `src/FlashyCardMaker.Core/Services/VoiceDiscoveryService.cs`
-- [ ] T042 [P] [US2] Implement translation provider validation adapter in `src/FlashyCardMaker.Infrastructure/Providers/TranslationProviderValidator.cs`
-- [ ] T043 [P] [US2] Implement audio provider validation adapter in `src/FlashyCardMaker.Infrastructure/Providers/AudioProviderValidator.cs`
-- [ ] T044 [US2] Implement voice discovery provider client with request contract enforcement in `src/FlashyCardMaker.Infrastructure/Providers/VoiceDiscoveryProviderClient.cs`
-- [ ] T045 [US2] Implement CLI `validate` command handler in `src/FlashyCardMaker.UI.Cli/Commands/ValidateCommand.cs`
-- [ ] T046 [US2] Implement CLI `voices` command handler in `src/FlashyCardMaker.UI.Cli/Commands/VoicesCommand.cs`
-- [ ] T047 [US2] Implement localized validation message mapping in `src/FlashyCardMaker.UI.Cli/Presentation/ValidationMessagePresenter.cs`
+- [X] T038 [P] [US2] Implement provider configuration model in `src/FlashyCardMaker.Core/Models/ProviderConfiguration.cs`
+- [X] T039 [P] [US2] Implement voice catalog item model in `src/FlashyCardMaker.Core/Models/VoiceCatalogItem.cs`
+- [X] T040 [US2] Implement run preflight validator for language/service/output checks in `src/FlashyCardMaker.Core/Services/RunPreflightValidator.cs`
+- [X] T041 [US2] Implement voice discovery service interface and coordinator in `src/FlashyCardMaker.Core/Services/VoiceDiscoveryService.cs`
+- [X] T042 [P] [US2] Implement translation provider validation adapter in `src/FlashyCardMaker.Infrastructure/Providers/TranslationProviderValidator.cs`
+- [X] T043 [P] [US2] Implement audio provider validation adapter in `src/FlashyCardMaker.Infrastructure/Providers/AudioProviderValidator.cs`
+- [X] T044 [US2] Implement voice discovery provider client with request contract enforcement in `src/FlashyCardMaker.Infrastructure/Providers/VoiceDiscoveryProviderClient.cs`
+- [X] T045 [US2] Implement CLI `validate` command handler in `src/FlashyCardMaker.UI.Cli/Commands/ValidateCommand.cs`
+- [X] T046 [US2] Implement CLI `voices` command handler in `src/FlashyCardMaker.UI.Cli/Commands/VoicesCommand.cs`
+- [X] T047 [US2] Implement localized validation message mapping in `src/FlashyCardMaker.UI.Cli/Presentation/ValidationMessagePresenter.cs`
 
 **Checkpoint**: US2 is independently functional and testable.
 
@@ -125,25 +125,25 @@
 
 ### Tests for User Story 3 (REQUIRED)
 
-- [ ] T048 [P] [US3] Add contract tests for progress endpoint in `tests/FlashyCardMaker.Contracts.Tests/ProgressContractTests.cs`
-- [ ] T049 [P] [US3] Add contract tests for resume endpoint in `tests/FlashyCardMaker.Contracts.Tests/ResumeRunContractTests.cs`
-- [ ] T050 [P] [US3] Add integration tests for retry and threshold stop policies in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/RetryThresholdPolicyTests.cs`
-- [ ] T051 [P] [US3] Add integration tests for resume skip and non-duplication behavior in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/RunResumeIntegrationTests.cs`
-- [ ] T052 [P] [US3] Add CLI tests for `status` and `resume` commands in `tests/FlashyCardMaker.UI.Cli.Tests/StatusAndResumeCommandTests.cs`
-- [ ] T053 [P] [US3] Add unit tests for run summary aggregation and status categories in `tests/FlashyCardMaker.Core.UnitTests/RunSummaryAggregatorTests.cs`
+- [X] T048 [P] [US3] Add contract tests for progress endpoint in `tests/FlashyCardMaker.Contracts.Tests/ProgressContractTests.cs`
+- [X] T049 [P] [US3] Add contract tests for resume endpoint in `tests/FlashyCardMaker.Contracts.Tests/ResumeRunContractTests.cs`
+- [X] T050 [P] [US3] Add integration tests for retry and threshold stop policies in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/RetryThresholdPolicyTests.cs`
+- [X] T051 [P] [US3] Add integration tests for resume skip and non-duplication behavior in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/RunResumeIntegrationTests.cs`
+- [X] T052 [P] [US3] Add CLI tests for `status` and `resume` commands in `tests/FlashyCardMaker.UI.Cli.Tests/StatusAndResumeCommandTests.cs`
+- [X] T053 [P] [US3] Add unit tests for run summary aggregation and status categories in `tests/FlashyCardMaker.Core.UnitTests/RunSummaryAggregatorTests.cs`
 
 ### Implementation for User Story 3
 
-- [ ] T054 [P] [US3] Implement job state record model in `src/FlashyCardMaker.Core/Models/JobStateRecord.cs`
-- [ ] T055 [P] [US3] Implement run summary model in `src/FlashyCardMaker.Core/Models/RunSummary.cs`
-- [ ] T056 [US3] Implement progress tracker and per-item phase reporting in `src/FlashyCardMaker.Core/Services/RunProgressTracker.cs`
-- [ ] T057 [US3] Implement retry policy evaluator and failure-threshold policy logic in `src/FlashyCardMaker.Core/Services/RetryAndThresholdPolicy.cs`
-- [ ] T058 [US3] Implement resume planner that skips completed jobs and selects resumable work in `src/FlashyCardMaker.Core/Services/RunResumePlanner.cs`
-- [ ] T059 [US3] Extend file run-state repository for interruption-safe snapshot persistence in `src/FlashyCardMaker.Infrastructure/Persistence/FileRunStateRepository.cs`
-- [ ] T060 [US3] Implement status endpoint/query service in `src/FlashyCardMaker.Core/Workflows/GetRunProgressQuery.cs`
-- [ ] T061 [US3] Implement resume command workflow service in `src/FlashyCardMaker.Core/Workflows/ResumeGenerationRunWorkflow.cs`
-- [ ] T062 [US3] Implement CLI `status` command in `src/FlashyCardMaker.UI.Cli/Commands/StatusCommand.cs`
-- [ ] T063 [US3] Implement CLI `resume` command in `src/FlashyCardMaker.UI.Cli/Commands/ResumeCommand.cs`
+- [X] T054 [P] [US3] Implement job state record model in `src/FlashyCardMaker.Core/Models/JobStateRecord.cs`
+- [X] T055 [P] [US3] Implement run summary model in `src/FlashyCardMaker.Core/Models/RunSummary.cs`
+- [X] T056 [US3] Implement progress tracker and per-item phase reporting in `src/FlashyCardMaker.Core/Services/RunProgressTracker.cs`
+- [X] T057 [US3] Implement retry policy evaluator and failure-threshold policy logic in `src/FlashyCardMaker.Core/Services/RetryAndThresholdPolicy.cs`
+- [X] T058 [US3] Implement resume planner that skips completed jobs and selects resumable work in `src/FlashyCardMaker.Core/Services/RunResumePlanner.cs`
+- [X] T059 [US3] Extend file run-state repository for interruption-safe snapshot persistence in `src/FlashyCardMaker.Infrastructure/Persistence/FileRunStateRepository.cs`
+- [X] T060 [US3] Implement status endpoint/query service in `src/FlashyCardMaker.Core/Workflows/GetRunProgressQuery.cs`
+- [X] T061 [US3] Implement resume command workflow service in `src/FlashyCardMaker.Core/Workflows/ResumeGenerationRunWorkflow.cs`
+- [X] T062 [US3] Implement CLI `status` command in `src/FlashyCardMaker.UI.Cli/Commands/StatusCommand.cs`
+- [X] T063 [US3] Implement CLI `resume` command in `src/FlashyCardMaker.UI.Cli/Commands/ResumeCommand.cs`
 
 **Checkpoint**: US3 is independently functional and testable.
 
@@ -153,13 +153,13 @@
 
 **Purpose**: Complete cross-story requirements and release-quality checks.
 
-- [ ] T064 [P] Add localization resource files and fallback defaults in `src/FlashyCardMaker.UI.Cli/Presentation/Localization/`
-- [ ] T065 Add localization runtime selector wiring in `src/FlashyCardMaker.UI.Cli/Program.cs`
-- [ ] T066 [P] Add integration tests for localization fallback behavior in `tests/FlashyCardMaker.UI.Cli.Tests/LocalizationFallbackTests.cs`
-- [ ] T067 Add structured logging integration tests for all six levels and rotation settings in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/LoggingConfigurationIntegrationTests.cs`
-- [ ] T068 [P] Add security regression tests for credential leakage in diagnostics in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/SensitiveDiagnosticsTests.cs`
-- [ ] T069 Update feature documentation and command examples in `specs/001-consolidated-flashcard-spec/quickstart.md`
-- [ ] T070 Run quickstart validation and capture verification notes in `specs/001-consolidated-flashcard-spec/research.md`
+- [X] T064 [P] Add localization resource files and fallback defaults in `src/FlashyCardMaker.UI.Cli/Presentation/Localization/`
+- [X] T065 Add localization runtime selector wiring in `src/FlashyCardMaker.UI.Cli/Program.cs`
+- [X] T066 [P] Add integration tests for localization fallback behavior in `tests/FlashyCardMaker.UI.Cli.Tests/LocalizationFallbackTests.cs`
+- [X] T067 Add structured logging integration tests for all six levels and rotation settings in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/LoggingConfigurationIntegrationTests.cs`
+- [X] T068 [P] Add security regression tests for credential leakage in diagnostics in `tests/FlashyCardMaker.Infrastructure.IntegrationTests/SensitiveDiagnosticsTests.cs`
+- [X] T069 Update feature documentation and command examples in `specs/001-consolidated-flashcard-spec/quickstart.md`
+- [X] T070 Run quickstart validation and capture verification notes in `specs/001-consolidated-flashcard-spec/research.md`
 
 ---
 

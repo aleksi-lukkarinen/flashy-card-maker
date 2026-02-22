@@ -1,0 +1,10 @@
+{
+  "en-US": {
+    "validation.ok": "Configuration is valid.",
+    "validation.error": "Configuration is invalid.",
+    "run.completed": "Run completed successfully."
+  },
+  "fi-FI": {
+    "validation.ok": "Asetukset ovat kelvolliset."
+  }
+}

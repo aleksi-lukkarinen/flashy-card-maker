@@ -41,3 +41,9 @@
 - Rationale: Supports runtime locale switching and avoids string duplication across UI workflows.
 - Alternatives considered:
   - Localize only final UI screens/messages (rejected: mixed-language output and inconsistent experience).
+
+## Validation Note 2026-02-22
+
+- Quickstart validation was executed at source and file-structure level.
+- Full `dotnet test` execution in this sandbox is currently constrained by environment-level restrictions for restore/temp tooling paths and timed-out execution.
+- Implementation artifacts are prepared to run with workspace-local `DOTNET_CLI_HOME`, `TMP`, and `TEMP` in a normal developer shell.
