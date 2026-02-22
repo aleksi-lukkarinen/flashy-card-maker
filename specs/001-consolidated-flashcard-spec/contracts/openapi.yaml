@@ -1,0 +1,259 @@
+openapi: 3.0.3
+info:
+  title: Consolidated Flashcard Workflow Contract
+  version: 0.1.0
+  description: Internal service contract for run orchestration, validation, progress, and resume.
+servers:
+  - url: http://localhost/internal
+paths:
+  /flashcard-runs/validate:
+    post:
+      summary: Validate effective configuration for a generation run
+      operationId: validateRunConfiguration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateRunRequest'
+      responses:
+        '200':
+          description: Validation results returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+  /flashcard-runs:
+    post:
+      summary: Start a new generation run
+      operationId: startGenerationRun
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartRunRequest'
+      responses:
+        '202':
+          description: Run accepted and started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunAcceptedResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-runs/{runId}/progress:
+    get:
+      summary: Get current run and per-item progress snapshot
+      operationId: getRunProgress
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Progress snapshot
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProgressSnapshot'
+        '404':
+          description: Run not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-runs/{runId}/resume:
+    post:
+      summary: Resume an interrupted or partially failed run
+      operationId: resumeRun
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResumeRunRequest'
+      responses:
+        '202':
+          description: Resume accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunAcceptedResponse'
+        '409':
+          description: Run cannot be resumed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /flashcard-runs/{runId}/summary:
+    get:
+      summary: Get final or current run summary
+      operationId: getRunSummary
+      parameters:
+        - name: runId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Run summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunSummary'
+        '404':
+          description: Run not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ValidateRunRequest:
+      type: object
+      required: [configuration]
+      properties:
+        configuration:
+          type: object
+          additionalProperties: true
+    ValidationResult:
+      type: object
+      required: [isValid, errors, warnings]
+      properties:
+        isValid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationIssue'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationIssue'
+    ValidationIssue:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        field:
+          type: string
+        message:
+          type: string
+    StartRunRequest:
+      type: object
+      required: [configurationSnapshot, sourceInputs]
+      properties:
+        configurationSnapshot:
+          type: object
+          additionalProperties: true
+        sourceInputs:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    ResumeRunRequest:
+      type: object
+      properties:
+        retryOverrides:
+          type: object
+          additionalProperties: true
+    RunAcceptedResponse:
+      type: object
+      required: [runId, status]
+      properties:
+        runId:
+          type: string
+        status:
+          type: string
+          enum: [Accepted, Running]
+        message:
+          type: string
+    ProgressSnapshot:
+      type: object
+      required: [runId, runStatus, totalItems, completedItems, itemProgress]
+      properties:
+        runId:
+          type: string
+        runStatus:
+          type: string
+          enum: [Pending, Running, Completed, PartialSuccess, Failed, Cancelled]
+        totalItems:
+          type: integer
+          minimum: 0
+        completedItems:
+          type: integer
+          minimum: 0
+        elapsedMs:
+          type: integer
+          minimum: 0
+        itemProgress:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemProgress'
+    ItemProgress:
+      type: object
+      required: [recordId, phase, status]
+      properties:
+        recordId:
+          type: string
+        phase:
+          type: string
+        status:
+          type: string
+          enum: [Pending, Running, Succeeded, Failed, Skipped]
+        percent:
+          type: number
+          minimum: 0
+          maximum: 100
+    RunSummary:
+      type: object
+      required: [runId, status, totals, outcomes]
+      properties:
+        runId:
+          type: string
+        status:
+          type: string
+          enum: [Completed, PartialSuccess, Failed, Cancelled]
+        totals:
+          type: object
+          required: [items, durationMs]
+          properties:
+            items:
+              type: integer
+            durationMs:
+              type: integer
+        outcomes:
+          type: object
+          additionalProperties:
+            type: integer
+        artifacts:
+          type: array
+          items:
+            type: string
+        messages:
+          type: array
+          items:
+            type: string
+    ErrorResponse:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string
