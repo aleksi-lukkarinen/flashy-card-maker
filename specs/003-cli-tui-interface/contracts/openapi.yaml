@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: Flashy Card Maker CLI Application Contract
+  version: 0.1.0
+  description: >-
+    Internal application service contract consumed by the CLI/TUI adapter.
+    This contract defines a UI-agnostic boundary for command execution and status reporting.
+servers:
+  - url: http://localhost/internal
+paths:
+  /execution/requests:
+    post:
+      summary: Submit a normalized execution request
+      operationId: submitExecutionRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecutionRequest'
+      responses:
+        '202':
+          description: Request accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionAccepted'
+        '400':
+          description: Validation failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /execution/requests/{requestId}:
+    get:
+      summary: Get execution status and result
+      operationId: getExecutionResult
+      parameters:
+        - in: path
+          name: requestId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Result available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExecutionResult'
+        '404':
+          description: Request not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /configuration/effective:
+    post:
+      summary: Resolve and validate effective configuration
+      operationId: resolveEffectiveConfiguration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationResolveRequest'
+      responses:
+        '200':
+          description: Effective configuration result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EffectiveConfiguration'
+components:
+  schemas:
+    ExecutionRequest:
+      type: object
+      required:
+        - operation
+        - parameters
+        - correlationId
+        - requestedAtUtc
+      properties:
+        operation:
+          type: string
+        parameters:
+          type: object
+          additionalProperties: true
+        correlationId:
+          type: string
+        requestedAtUtc:
+          type: string
+          format: date-time
+        requestedBy:
+          type: string
+          nullable: true
+    ExecutionAccepted:
+      type: object
+      required:
+        - requestId
+        - status
+      properties:
+        requestId:
+          type: string
+        status:
+          type: string
+          enum: [Accepted]
+    ExecutionResult:
+      type: object
+      required:
+        - requestId
+        - status
+        - exitCode
+        - messages
+      properties:
+        requestId:
+          type: string
+        status:
+          type: string
+          enum: [Success, ValidationError, ConfigError, RuntimeError, Cancelled]
+        exitCode:
+          type: integer
+        messages:
+          type: array
+          items:
+            type: string
+        metrics:
+          type: object
+          additionalProperties: true
+        artifacts:
+          type: array
+          items:
+            type: string
+    ConfigurationResolveRequest:
+      type: object
+      required:
+        - commandLine
+        - files
+      properties:
+        commandLine:
+          type: array
+          items:
+            type: string
+        files:
+          type: array
+          items:
+            type: string
+    EffectiveConfiguration:
+      type: object
+      required:
+        - values
+        - origins
+        - isValid
+      properties:
+        values:
+          type: object
+          additionalProperties: true
+        origins:
+          type: object
+          additionalProperties:
+            type: string
+        warnings:
+          type: array
+          items:
+            type: string
+        errors:
+          type: array
+          items:
+            type: string
+        isValid:
+          type: boolean
+    ErrorResponse:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
